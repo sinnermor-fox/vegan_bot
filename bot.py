@@ -18,8 +18,8 @@ def main_keyboard():
 
 def menu_per_day(update, context):
     logging.info('Дай меню')
-    # username = update.effective_chat.username
-    response = requests.get('http://127.0.0.1:5000/menu/1')
+    username = update.effective_chat.username
+    response = requests.get(f'http://127.0.0.1:5000/menu/{username}')
     user_data = f"{response.json()['menu']}"
     update.message.reply_text(str(user_data), reply_markup=main_keyboard())
 
